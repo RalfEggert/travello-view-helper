@@ -1,0 +1,32 @@
+<?php
+/**
+ * Zend Framework 3 module with a couple of useful view helper
+ *
+ * @package    ZendViewHelper
+ * @author     Ralf Eggert <ralf@travello.de>
+ * @link       https://github.com/RalfEggert/zend-view-helper
+ * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
+ */
+?>
+<?php if ($this->element->getOption('heading')) : ?>
+    <h4>
+        <?php echo $this->translate(
+            $this->element->getOption('heading')
+        ) ?>
+    </h4>
+<?php endif; ?>
+<div class="form-group">
+    <?php echo $this->formLabel($this->element); ?>
+    <div class="col-sm-10">
+        <?php echo $this->formElement($this->element); ?>
+        <?php echo $this->formElementErrors($this->element); ?>
+        <?php if ($this->element->getOption('help_block')) : ?>
+            <span class="fa fa-info-circle"></span>&nbsp;
+            <?php
+            echo $this->translate(
+                $this->element->getOption('help_block')
+            );
+            ?>
+        <?php endif; ?>
+    </div>
+</div>
