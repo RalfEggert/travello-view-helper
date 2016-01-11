@@ -2,13 +2,13 @@
 /**
  * Zend Framework 3 module with a couple of useful view helper
  *
- * @package    ZendViewHelper
+ * @package    TravelloViewHelper
  * @author     Ralf Eggert <ralf@travello.de>
- * @link       https://github.com/RalfEggert/zend-view-helper
+ * @link       https://github.com/RalfEggert/travello-view-helper
  * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
  */
 
-namespace ZendViewHelper\View\Helper;
+namespace TravelloViewHelper\View\Helper;
 
 use Zend\Form\Element\Button;
 use Zend\Form\Element\Checkbox;
@@ -25,12 +25,15 @@ use Zend\View\Model\ViewModel;
  *
  * Render a form in Twitter Bootstrap style
  *
- * @package ZendViewHelper\View\Helper
+ * @package TravelloViewHelper\View\Helper
  */
 class BootstrapForm extends AbstractHelper
 {
     /**
      * Outputs message depending on flag
+     *
+     * @param FormInterface $form
+     * @param string        $class
      *
      * @return string
      */
@@ -57,7 +60,7 @@ class BootstrapForm extends AbstractHelper
                 $viewModel = new ViewModel();
                 $viewModel->setVariable('element', $element);
                 $viewModel->setTemplate(
-                    'zend-view-helper/widget/bootstrap-form-checkbox'
+                    'travello-view-helper/widget/bootstrap-form-checkbox'
                 );
 
                 $output .= $this->getView()->render($viewModel);
@@ -70,7 +73,7 @@ class BootstrapForm extends AbstractHelper
                 $viewModel = new ViewModel();
                 $viewModel->setVariable('element', $element);
                 $viewModel->setTemplate(
-                    'zend-view-helper/widget/bootstrap-form-group'
+                    'travello-view-helper/widget/bootstrap-form-group'
                 );
 
                 $output .= $this->getView()->render($viewModel);
@@ -80,7 +83,7 @@ class BootstrapForm extends AbstractHelper
         $viewModel = new ViewModel();
         $viewModel->setVariable('submitElements', $submitElements);
         $viewModel->setTemplate(
-            'zend-view-helper/widget/bootstrap-form-submit'
+            'travello-view-helper/widget/bootstrap-form-submit'
         );
 
         $output .= $this->getView()->render($viewModel);

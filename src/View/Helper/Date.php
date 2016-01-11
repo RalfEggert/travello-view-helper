@@ -2,13 +2,13 @@
 /**
  * Zend Framework 3 module with a couple of useful view helper
  *
- * @package    ZendViewHelper
+ * @package    TravelloViewHelper
  * @author     Ralf Eggert <ralf@travello.de>
- * @link       https://github.com/RalfEggert/zend-view-helper
+ * @link       https://github.com/RalfEggert/travello-view-helper
  * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
  */
 
-namespace ZendViewHelper\View\Helper;
+namespace TravelloViewHelper\View\Helper;
 
 use DateTime;
 use IntlDateFormatter;
@@ -19,14 +19,14 @@ use Zend\View\Helper\AbstractHelper;
  *
  * Simplifies the date output for the dateFormat view helper
  *
- * @package ZendViewHelper\View\Helper
+ * @package TravelloViewHelper\View\Helper
  */
 class Date extends AbstractHelper
 {
     /**
      * get string date and output it
      *
-     * @param string $date
+     * @param string|DateTime $date
      * @param string $mode
      *
      * @return boolean

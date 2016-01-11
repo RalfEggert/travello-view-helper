@@ -1,5 +1,5 @@
 {
-    "name": "ralfeggert/zend-view-helper",
+    "name": "ralfeggert/travello-view-helper",
     "description": "Zend Framework 2/3 module with a couple of useful view helper",
     "license": "The MIT License (MIT)",
     "authors": [
@@ -12,13 +12,14 @@
     ],
     "require": {
         "php": ">=5.5",
+        "ext-intl" : "*",
         "zendframework/zend-modulemanager": "~2.5",
         "zendframework/zend-mvc": "~2.5",
         "zendframework/zend-view": "~2.5"
     },
     "autoload": {
         "psr-4": {
-            "ZendViewHelper\\": "src/"
+            "TravelloViewHelper\\": "src/"
         },
         "classmap": [
             "./Module.php"

@@ -2,13 +2,13 @@
 /**
  * Zend Framework 3 module with a couple of useful view helper
  *
- * @package    ZendViewHelper
+ * @package    TravelloViewHelper
  * @author     Ralf Eggert <ralf@travello.de>
- * @link       https://github.com/RalfEggert/zend-view-helper
+ * @link       https://github.com/RalfEggert/travello-view-helper
  * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
  */
 
-namespace ZendViewHelper\View\Helper;
+namespace TravelloViewHelper\View\Helper;
 
 use Zend\Mvc\Controller\Plugin\FlashMessenger as ZendFlashMessenger;
 use Zend\View\Helper\AbstractHelper;
@@ -19,7 +19,7 @@ use Zend\View\Model\ViewModel;
  *
  * Outputs all messages from FlashMessenger in Bootstrap style
  *
- * @package ZendViewHelper\View\Helper
+ * @package TravelloViewHelper\View\Helper
  */
 class BootstrapFlashMessenger extends AbstractHelper
 {
@@ -119,7 +119,7 @@ class BootstrapFlashMessenger extends AbstractHelper
                 $viewModel->setVariable('alertClass', $addClass);
                 $viewModel->setVariable('alertMessage', $message);
                 $viewModel->setTemplate(
-                    'zend-view-helper/widget/bootstrap-alert'
+                    'travello-view-helper/widget/bootstrap-alert'
                 );
 
                 $output .= $this->getView()->render($viewModel);

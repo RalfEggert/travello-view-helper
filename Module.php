@@ -2,20 +2,20 @@
 /**
  * Zend Framework 3 module with a couple of useful view helper
  *
- * @package    ZendViewHelper
+ * @package    TravelloViewHelper
  * @author     Ralf Eggert <ralf@travello.de>
- * @link       https://github.com/RalfEggert/zend-view-helper
+ * @link       https://github.com/RalfEggert/travello-view-helper
  * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
  */
 
-namespace ZendViewHelper;
+namespace TravelloViewHelper;
 
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
 
 /**
- * ZendViewHelper module class
+ * TravelloViewHelper module class
  *
- * @package    ZendViewHelper
+ * @package    TravelloViewHelper
  */
 class Module implements ConfigProviderInterface
 {

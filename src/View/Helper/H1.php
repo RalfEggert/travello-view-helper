@@ -2,13 +2,13 @@
 /**
  * Zend Framework 3 module with a couple of useful view helper
  *
- * @package    ZendViewHelper
+ * @package    TravelloViewHelper
  * @author     Ralf Eggert <ralf@travello.de>
- * @link       https://github.com/RalfEggert/zend-view-helper
+ * @link       https://github.com/RalfEggert/travello-view-helper
  * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
  */
 
-namespace ZendViewHelper\View\Helper;
+namespace TravelloViewHelper\View\Helper;
 
 use Zend\View\Helper\HeadTitle;
 
@@ -17,7 +17,7 @@ use Zend\View\Helper\HeadTitle;
  *
  * Helper for setting and retrieving h1 element titles
  *
- * @package ZendViewHelper\View\Helper
+ * @package TravelloViewHelper\View\Helper
  */
 class H1 extends HeadTitle
 {
@@ -26,7 +26,7 @@ class H1 extends HeadTitle
      *
      * @var string
      */
-    protected $regKey = 'ZendViewHelper_View_Helper_H1';
+    protected $regKey = 'TravelloViewHelper_View_Helper_H1';
 
     /**
      * Flag whether to automatically escape output, must also be
