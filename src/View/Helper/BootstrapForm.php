@@ -33,21 +33,31 @@ class BootstrapForm extends AbstractHelper
      * Outputs message depending on flag
      *
      * @param FormInterface $form
-     * @param string        $class
+     * @param array         $staticElements
      *
      * @return string
      */
     public function __invoke(
-        FormInterface $form, $class = 'form-horizontal'
+        FormInterface $form, array $staticElements = []
     ) {
         $submitElements = [];
 
         /** @var Form $form */
-        $form->setAttribute('class', $class);
         $form->setAttribute('role', 'form');
         $form->prepare();
 
         $output = $this->getView()->form()->openTag($form);
+
+        foreach ($staticElements as $element) {
+            $viewModel = new ViewModel();
+            $viewModel->setVariable('label', $element['label']);
+            $viewModel->setVariable('value', $element['value']);
+            $viewModel->setTemplate(
+                'travello-view-helper/widget/bootstrap-form-static'
+            );
+
+            $output .= $this->getView()->render($viewModel);
+        }
 
         foreach ($form as $element) {
             if ($element instanceof Submit || $element instanceof Button) {

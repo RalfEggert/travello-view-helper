@@ -5,4 +5,5 @@ return array(
     'travello-view-helper/widget/bootstrap-form-checkbox' => __DIR__ . '/view/travello-view-helper/widget/bootstrap-form-submit.phtml',
     'travello-view-helper/widget/bootstrap-form-submit'   => __DIR__ . '/view/travello-view-helper/widget/bootstrap-form-submit.phtml',
     'travello-view-helper/widget/bootstrap-form-group'    => __DIR__ . '/view/travello-view-helper/widget/bootstrap-form-group.phtml',
+    'travello-view-helper/widget/bootstrap-form-static'   => __DIR__ . '/view/travello-view-helper/widget/bootstrap-form-static.phtml',
 );
