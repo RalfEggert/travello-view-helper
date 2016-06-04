@@ -13,6 +13,7 @@ use TravelloViewHelper\View\Helper\BootstrapFlashMessengerFactory;
 use TravelloViewHelper\View\Helper\BootstrapForm;
 use TravelloViewHelper\View\Helper\Date;
 use TravelloViewHelper\View\Helper\H1;
+use Zend\ServiceManager\Factory\InvokableFactory;
 
 return [
     'view_helpers' => [
@@ -23,9 +24,9 @@ return [
             'bootstrapFlashMessenger' => BootstrapFlashMessenger::class,
         ],
         'factories' => [
-            H1::class                      => H1::class,
-            Date::class                    => Date::class,
-            BootstrapForm::class           => BootstrapForm::class,
+            H1::class                      => InvokableFactory::class,
+            Date::class                    => InvokableFactory::class,
+            BootstrapForm::class           => InvokableFactory::class,
             BootstrapFlashMessenger::class =>
                 BootstrapFlashMessengerFactory::class,
         ],
