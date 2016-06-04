@@ -10,7 +10,7 @@
 
 namespace TravelloViewHelper\View\Helper;
 
-use Zend\Mvc\Controller\Plugin\FlashMessenger as ZendFlashMessenger;
+use Zend\Mvc\Plugin\FlashMessenger\FlashMessenger as ZendFlashMessenger;
 use Zend\View\Helper\AbstractHelper;
 use Zend\View\Model\ViewModel;
 

@@ -7,17 +7,27 @@
  * @link       https://github.com/RalfEggert/travello-view-helper
  * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
  */
+
+use TravelloViewHelper\View\Helper\BootstrapFlashMessenger;
+use TravelloViewHelper\View\Helper\BootstrapFlashMessengerFactory;
+use TravelloViewHelper\View\Helper\BootstrapForm;
+use TravelloViewHelper\View\Helper\Date;
+use TravelloViewHelper\View\Helper\H1;
+
 return [
     'view_helpers' => [
-        'invokables' => [
-            'h1'            => TravelloViewHelper\View\Helper\H1::class,
-            'date'          => TravelloViewHelper\View\Helper\Date::class,
-            'bootstrapForm' =>
-                TravelloViewHelper\View\Helper\BootstrapForm::class,
+        'aliases'   => [
+            'h1'                      => H1::class,
+            'date'                    => Date::class,
+            'bootstrapForm'           => BootstrapForm::class,
+            'bootstrapFlashMessenger' => BootstrapFlashMessenger::class,
         ],
-        'factories'  => [
-            'bootstrapFlashMessenger' =>
-                TravelloViewHelper\View\Helper\BootstrapFlashMessengerFactory::class,
+        'factories' => [
+            H1::class                      => H1::class,
+            Date::class                    => Date::class,
+            BootstrapForm::class           => BootstrapForm::class,
+            BootstrapFlashMessenger::class =>
+                BootstrapFlashMessengerFactory::class,
         ],
     ],
 

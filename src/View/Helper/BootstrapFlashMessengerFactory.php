@@ -10,9 +10,8 @@
 
 namespace TravelloViewHelper\View\Helper;
 
-use Zend\ServiceManager\FactoryInterface;
-use Zend\ServiceManager\ServiceLocatorAwareInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Interop\Container\ContainerInterface;
+use Zend\ServiceManager\Factory\FactoryInterface;
 
 /**
  * Class BootstrapFlashMessengerFactory
@@ -26,16 +25,18 @@ class BootstrapFlashMessengerFactory implements FactoryInterface
     /**
      * Create Service Factory
      *
-     * @param ServiceLocatorInterface|ServiceLocatorAwareInterface $viewHelperManager
+     * @param ContainerInterface $container
+     * @param string             $requestedName
+     * @param array|null         $options
      *
      * @return BootstrapFlashMessenger
      */
-    public function createService(
-        ServiceLocatorInterface $viewHelperManager
+    public function __invoke(
+        ContainerInterface $container,
+        $requestedName,
+        array $options = null
     ) {
-        $serviceManager = $viewHelperManager->getServiceLocator();
-
-        $controllerPluginManager = $serviceManager->get(
+        $controllerPluginManager = $container->get(
             'ControllerPluginManager'
         );
 
