@@ -19,9 +19,6 @@
     "autoload": {
         "psr-4": {
             "TravelloViewHelper\\": "src/"
-        },
-        "classmap": [
-            "./Module.php"
-        ]
+        }
     }
 }
