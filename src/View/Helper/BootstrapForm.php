@@ -13,6 +13,7 @@ namespace TravelloViewHelper\View\Helper;
 use Zend\Form\Element\Button;
 use Zend\Form\Element\Checkbox;
 use Zend\Form\Element\Csrf;
+use Zend\Form\Element\File;
 use Zend\Form\Element\Hidden;
 use Zend\Form\Element\Submit;
 use Zend\Form\Form;
@@ -75,7 +76,12 @@ class BootstrapForm extends AbstractHelper
 
                 $output .= $this->getView()->render($viewModel);
             } else {
-                $element->setAttributes(['class' => 'form-control']);
+                if ($element instanceof File) {
+                    $element->setAttributes(['class' => 'form-control-static']);
+                } else {
+                    $element->setAttributes(['class' => 'form-control']);
+                }
+
                 $element->setLabelAttributes(
                     ['class' => 'col-sm-2 control-label']
                 );
