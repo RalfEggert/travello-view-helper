@@ -10,14 +10,12 @@
 
 namespace TravelloViewHelper;
 
-use Zend\ModuleManager\Feature\ConfigProviderInterface;
-
 /**
  * TravelloViewHelper module class
  *
  * @package    TravelloViewHelper
  */
-class Module implements ConfigProviderInterface
+class Module
 {
     /**
      * Returns configuration to merge with application configuration
@@ -26,6 +24,8 @@ class Module implements ConfigProviderInterface
      */
     public function getConfig()
     {
-        return include __DIR__ . '/../config/module.config.php';
+        $provider = new ConfigProvider();
+
+        return $provider();
     }
 }

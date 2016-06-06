@@ -19,6 +19,12 @@
         "zendframework/zend-mvc-plugin-flashmessenger": "^1.0",
         "zendframework/zend-form": "^2.8 || ^3.0"
     },
+    "extra": {
+        "zf": {
+            "component": "TravelloViewHelper",
+            "config-provider": "TravelloViewHelper\\ConfigProvider"
+        }
+    },
     "autoload": {
         "psr-4": {
             "TravelloViewHelper\\": "src/"
