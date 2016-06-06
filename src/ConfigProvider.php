@@ -33,6 +33,7 @@ class ConfigProvider
     {
         return [
             'view_helpers' => $this->getViewHelperConfig(),
+            'view_manager' => $this->getViewManagerConfig(),
         ];
     }
 
