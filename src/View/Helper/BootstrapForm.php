@@ -6,6 +6,7 @@
  * @author     Ralf Eggert <ralf@travello.de>
  * @link       https://github.com/RalfEggert/travello-view-helper
  * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
+ *
  */
 
 namespace TravelloViewHelper\View\Helper;
@@ -35,16 +36,26 @@ class BootstrapForm extends AbstractHelper
      *
      * @param FormInterface $form
      * @param array         $staticElements
+     * @param null          $formClass
      *
      * @return string
      */
     public function __invoke(
-        FormInterface $form, array $staticElements = []
+        FormInterface $form, array $staticElements = [], $formClass = null
     ) {
         $submitElements = [];
 
         /** @var Form $form */
         $form->setAttribute('role', 'form');
+
+        if ($formClass == 'form-inline') {
+            $form->setAttribute('class', $formClass . ' pull-right');
+        } elseif ($formClass) {
+            $form->setAttribute('class', $formClass);
+        } else {
+            $formClass = $form->getAttribute('class');
+        }
+
         $form->prepare();
 
         $output = $this->getView()->form()->openTag($form);
@@ -77,29 +88,47 @@ class BootstrapForm extends AbstractHelper
                 $output .= $this->getView()->render($viewModel);
             } else {
                 if ($element instanceof File) {
-                    $element->setAttributes(['class' => 'form-control-static']);
+                    $element->setAttributes(
+                        ['class' => 'form-control-static']
+                    );
                 } else {
                     $element->setAttributes(['class' => 'form-control']);
                 }
 
-                $element->setLabelAttributes(
-                    ['class' => 'col-sm-2 control-label']
-                );
+                if ($formClass == 'form-inline') {
+                    $element->setLabelAttributes(
+                        ['class' => 'control-label']
+                    );
+
+                    $template = 'bootstrap-form-group-inline';
+                } else {
+                    $element->setLabelAttributes(
+                        ['class' => 'col-sm-2 control-label']
+                    );
+
+                    $template = 'bootstrap-form-group';
+                }
 
                 $viewModel = new ViewModel();
                 $viewModel->setVariable('element', $element);
                 $viewModel->setTemplate(
-                    'travello-view-helper/widget/bootstrap-form-group'
+                    'travello-view-helper/widget/' . $template
                 );
 
                 $output .= $this->getView()->render($viewModel);
             }
         }
 
+        if ($formClass == 'form-inline') {
+            $template = 'bootstrap-form-submit-inline';
+        } else {
+            $template = 'bootstrap-form-submit';
+        }
+
         $viewModel = new ViewModel();
         $viewModel->setVariable('submitElements', $submitElements);
         $viewModel->setTemplate(
-            'travello-view-helper/widget/bootstrap-form-submit'
+            'travello-view-helper/widget/' . $template
         );
 
         $output .= $this->getView()->render($viewModel);

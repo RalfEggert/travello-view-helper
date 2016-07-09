@@ -1,0 +1,15 @@
+<?php
+/**
+ * Zend Framework 3 module with a couple of useful view helper
+ *
+ * @package    TravelloViewHelper
+ * @author     Ralf Eggert <ralf@travello.de>
+ * @link       https://github.com/RalfEggert/travello-view-helper
+ * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
+ */
+
+$this->element->setAttribute('placeholder', $this->element->getLabel());
+?>
+<div class="form-group">
+    <?php echo $this->formElement($this->element); ?>
+</div>
