@@ -17,6 +17,7 @@ use Zend\Form\Element\Csrf;
 use Zend\Form\Element\File;
 use Zend\Form\Element\Hidden;
 use Zend\Form\Element\Submit;
+use Zend\Form\FieldsetInterface;
 use Zend\Form\Form;
 use Zend\Form\FormInterface;
 use Zend\View\Helper\AbstractHelper;
@@ -71,8 +72,48 @@ class BootstrapForm extends AbstractHelper
             $output .= $this->getView()->render($viewModel);
         }
 
-        foreach ($form as $element) {
-            if ($element instanceof Submit || $element instanceof Button) {
+        list($output, $submitElements) = $this->renderElements(
+            $form, $formClass, $output, $submitElements
+        );
+
+        if ($formClass == 'form-inline') {
+            $template = 'bootstrap-form-submit-inline';
+        } else {
+            $template = 'bootstrap-form-submit';
+        }
+
+        $viewModel = new ViewModel();
+        $viewModel->setVariable('submitElements', $submitElements);
+        $viewModel->setTemplate(
+            'travello-view-helper/widget/' . $template
+        );
+
+        $output .= $this->getView()->render($viewModel);
+
+        $output .= $this->getView()->form()->closeTag();
+
+        return $output;
+    }
+
+    /**
+     * @param FieldsetInterface $elements
+     * @param                   $formClass
+     * @param                   $output
+     * @param                   $submitElements
+     *
+     * @return array
+     */
+    private function renderElements(
+        FieldsetInterface $elements, $formClass, $output, $submitElements
+    ) {
+        foreach ($elements as $element) {
+            if ($element instanceof FieldsetInterface) {
+                list($output, $submitElements) = $this->renderElements(
+                    $element, $formClass, $output, $submitElements
+                );
+            } elseif ($element instanceof Submit
+                || $element instanceof Button
+            ) {
                 $submitElements[] = $element;
             } elseif (
                 $element instanceof Csrf || $element instanceof Hidden
@@ -119,22 +160,6 @@ class BootstrapForm extends AbstractHelper
             }
         }
 
-        if ($formClass == 'form-inline') {
-            $template = 'bootstrap-form-submit-inline';
-        } else {
-            $template = 'bootstrap-form-submit';
-        }
-
-        $viewModel = new ViewModel();
-        $viewModel->setVariable('submitElements', $submitElements);
-        $viewModel->setTemplate(
-            'travello-view-helper/widget/' . $template
-        );
-
-        $output .= $this->getView()->render($viewModel);
-
-        $output .= $this->getView()->form()->closeTag();
-
-        return $output;
+        return [$output, $submitElements];
     }
 }
