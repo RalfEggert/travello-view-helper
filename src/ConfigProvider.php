@@ -34,6 +34,7 @@ class ConfigProvider
         return [
             'view_helpers' => $this->getViewHelperConfig(),
             'view_manager' => $this->getViewManagerConfig(),
+            'templates'    => $this->getTemplatesConfig(),
         ];
     }
 
@@ -72,6 +73,33 @@ class ConfigProvider
             'template_path_stack' => [__DIR__ . '/../view',],
             'template_map'        =>
                 include __DIR__ . '/../template_map.php',
+        ];
+    }
+
+    /**
+     * Get templates configuration for expressive
+     *
+     * @return array
+     */
+    public function getTemplatesConfig()
+    {
+        return [
+            'map'   => [
+                'travello-view-helper/widget/bootstrap-alert'              =>
+                    __DIR__ . '/../view/travello-view-helper/widget/bootstrap-alert',
+                'travello-view-helper/widget/bootstrap-form-checkbox'      =>
+                    __DIR__ . '/../view/travello-view-helper/widget/bootstrap-form-checkbox.phtml',
+                'travello-view-helper/widget/bootstrap-form-group'         =>
+                    __DIR__ . '/../view/travello-view-helper/widget/bootstrap-form-group.phtml',
+                'travello-view-helper/widget/bootstrap-form-group-inline'  =>
+                    __DIR__ . '/../view/travello-view-helper/widget/bootstrap-form-group-inline.phtml',
+                'travello-view-helper/widget/bootstrap-form-static'        =>
+                    __DIR__ . '/../view/travello-view-helper/widget/bootstrap-form-static',
+                'travello-view-helper/widget/bootstrap-form-submit'        =>
+                    __DIR__ . '/../view/travello-view-helper/widget/bootstrap-form-submit.phtml',
+                'travello-view-helper/widget/bootstrap-form-submit-inline' =>
+                    __DIR__ . '/../view/travello-view-helper/widget/bootstrap-form-submit-inline.phtml',
+            ],
         ];
     }
 }
