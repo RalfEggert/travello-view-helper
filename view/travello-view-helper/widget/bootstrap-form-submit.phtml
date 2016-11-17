@@ -7,9 +7,12 @@
  * @link       https://github.com/RalfEggert/travello-view-helper
  * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
  */
+
+$offset = $this->offset;
+$width  = 12 - $offset;
 ?>
 <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
+    <div class="col-sm-offset-<?= $offset ?> col-sm-<?= $width ?>">
         <?php foreach ($this->submitElements as $element): ?>
             <?php echo $this->formElement($element); ?>
         <?php endforeach; ?>

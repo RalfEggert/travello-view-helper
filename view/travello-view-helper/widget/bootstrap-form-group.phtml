@@ -7,6 +7,9 @@
  * @link       https://github.com/RalfEggert/travello-view-helper
  * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
  */
+
+$offset = $this->offset;
+$width  = 12 - $offset;
 ?>
 <?php if ($this->element->getOption('heading')) : ?>
     <h4>
@@ -17,7 +20,7 @@
 <?php endif; ?>
 <div class="form-group">
     <?php echo $this->formLabel($this->element); ?>
-    <div class="col-sm-10">
+    <div class="col-sm-<?= $width ?>">
         <?php echo $this->formElement($this->element); ?>
         <?php echo $this->formElementErrors($this->element); ?>
         <?php if ($this->element->getOption('help_block')) : ?>

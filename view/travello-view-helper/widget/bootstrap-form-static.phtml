@@ -7,13 +7,16 @@
  * @link       https://github.com/RalfEggert/travello-view-helper
  * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
  */
+
+$offset = $this->offset;
+$width  = 12 - $offset;
 ?>
 <div class="form-group">
-    <label class="col-sm-2 control-label">
+    <label class="col-sm-<?= $offset ?> control-label">
         <?php echo $this->label; ?>
     </label>
 
-    <div class="col-sm-10 form-control-static">
+    <div class="col-sm-<?= $width ?> form-control-static">
         <?php echo $this->value; ?>
     </div>
 </div>

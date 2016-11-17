@@ -38,11 +38,12 @@ class BootstrapForm extends AbstractHelper
      * @param FormInterface $form
      * @param array         $staticElements
      * @param null          $formClass
+     * @param int           $offset
      *
      * @return string
      */
     public function __invoke(
-        FormInterface $form, array $staticElements = [], $formClass = null
+        FormInterface $form, array $staticElements = [], $formClass = null, $offset = 2
     ) {
         $submitElements = [];
 
@@ -65,6 +66,7 @@ class BootstrapForm extends AbstractHelper
             $viewModel = new ViewModel();
             $viewModel->setVariable('label', $element['label']);
             $viewModel->setVariable('value', $element['value']);
+            $viewModel->setVariable('offset', $offset);
             $viewModel->setTemplate(
                 'travello-view-helper/widget/bootstrap-form-static'
             );
@@ -73,7 +75,7 @@ class BootstrapForm extends AbstractHelper
         }
 
         list($output, $submitElements) = $this->renderElements(
-            $form, $formClass, $output, $submitElements
+            $form, $formClass, $output, $submitElements, $offset
         );
 
         if ($formClass == 'form-inline') {
@@ -84,6 +86,7 @@ class BootstrapForm extends AbstractHelper
 
         $viewModel = new ViewModel();
         $viewModel->setVariable('submitElements', $submitElements);
+        $viewModel->setVariable('offset', $offset);
         $viewModel->setTemplate(
             'travello-view-helper/widget/' . $template
         );
@@ -100,11 +103,12 @@ class BootstrapForm extends AbstractHelper
      * @param                   $formClass
      * @param                   $output
      * @param                   $submitElements
+     * @param int               $offset
      *
      * @return array
      */
     private function renderElements(
-        FieldsetInterface $elements, $formClass, $output, $submitElements
+        FieldsetInterface $elements, $formClass, $output, $submitElements, $offset = 2
     ) {
         foreach ($elements as $element) {
             if ($element instanceof FieldsetInterface) {
@@ -122,6 +126,7 @@ class BootstrapForm extends AbstractHelper
             } elseif ($element instanceof Checkbox) {
                 $viewModel = new ViewModel();
                 $viewModel->setVariable('element', $element);
+                $viewModel->setVariable('offset', $offset);
                 $viewModel->setTemplate(
                     'travello-view-helper/widget/bootstrap-form-checkbox'
                 );
@@ -144,7 +149,7 @@ class BootstrapForm extends AbstractHelper
                     $template = 'bootstrap-form-group-inline';
                 } else {
                     $element->setLabelAttributes(
-                        ['class' => 'col-sm-2 control-label']
+                        ['class' => 'col-sm-' . $offset . ' control-label']
                     );
 
                     $template = 'bootstrap-form-group';
@@ -152,6 +157,7 @@ class BootstrapForm extends AbstractHelper
 
                 $viewModel = new ViewModel();
                 $viewModel->setVariable('element', $element);
+                $viewModel->setVariable('offset', $offset);
                 $viewModel->setTemplate(
                     'travello-view-helper/widget/' . $template
                 );
