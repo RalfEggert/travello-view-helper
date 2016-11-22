@@ -13,6 +13,7 @@ namespace TravelloViewHelper;
 use TravelloViewHelper\View\Helper\BootstrapFlashMessenger;
 use TravelloViewHelper\View\Helper\BootstrapFlashMessengerFactory;
 use TravelloViewHelper\View\Helper\BootstrapForm;
+use TravelloViewHelper\View\Helper\BootstrapMenu;
 use TravelloViewHelper\View\Helper\Date;
 use TravelloViewHelper\View\Helper\H1;
 use Zend\ServiceManager\Factory\InvokableFactory;
@@ -50,12 +51,14 @@ class ConfigProvider
                 'h1'                      => H1::class,
                 'date'                    => Date::class,
                 'bootstrapForm'           => BootstrapForm::class,
+                'bootstrapMenu'           => BootstrapMenu::class,
                 'bootstrapFlashMessenger' => BootstrapFlashMessenger::class,
             ],
             'factories' => [
                 H1::class                      => InvokableFactory::class,
                 Date::class                    => InvokableFactory::class,
                 BootstrapForm::class           => InvokableFactory::class,
+                BootstrapMenu::class           => InvokableFactory::class,
                 BootstrapFlashMessenger::class =>
                     BootstrapFlashMessengerFactory::class,
             ],
