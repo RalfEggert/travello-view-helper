@@ -58,6 +58,10 @@ class H1 extends HeadTitle
             ['<title>', '</title>'], ['<h1>', '</h1>'], $output
         );
 
+        if ($output == '<h1></h1>') {
+            return '';
+        }
+
         return $output;
     }
 }
