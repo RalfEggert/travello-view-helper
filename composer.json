@@ -1,7 +1,7 @@
 {
     "name": "ralfeggert/travello-view-helper",
     "description": "Zend Framework 3 module with a couple of useful view helper",
-    "license": "The MIT License (MIT)",
+    "license": "MIT",
     "authors": [
         {
             "name": "Ralf Eggert",
